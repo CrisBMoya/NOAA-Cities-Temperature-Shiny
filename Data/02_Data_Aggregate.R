@@ -4,7 +4,7 @@ rm(list=ls())
 library(tidyverse)
 
 #Read RDS
-AllData=readRDS(file="F:/NOAA/All.NOAA.Data.RDS")
+AllData=readRDS(file="~/Documents/NOAA_Data/All.NOAA.Data.RDS")
 
 #Failsafe
 REDO=FALSE
@@ -31,4 +31,5 @@ if(REDO==TRUE){
 MeanData=aggregate(x=AllData[,NumericCol], by=list(AllData$Location.Name, AllData$DayMonth), FUN=mean)
 
 #Save data
-write_delim(x=TestData, path="~/Aggregated.NOAA.Data.txt", delim="\t")
+saveRDS(object=MeanData, file="~/Aggregated.NOAA.Data.RDS.gzip", compress="bzip2")
+
