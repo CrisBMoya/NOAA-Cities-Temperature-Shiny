@@ -29,3 +29,6 @@ if(REDO==TRUE){
 
 #Aggregate data per location and date (equal dates across all three years)
 MeanData=aggregate(x=AllData[,NumericCol], by=list(AllData$Location.Name, AllData$DayMonth), FUN=mean)
+
+#Save data
+write_delim(x=TestData, path="~/Aggregated.NOAA.Data.txt", delim="\t")
